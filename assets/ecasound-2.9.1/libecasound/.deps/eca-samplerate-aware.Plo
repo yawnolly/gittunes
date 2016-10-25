@@ -1,0 +1,8 @@
+eca-samplerate-aware.lo: eca-samplerate-aware.cpp \
+ /usr/include/stdc-predef.h eca-samplerate-aware.h sample-specs.h
+
+/usr/include/stdc-predef.h:
+
+eca-samplerate-aware.h:
+
+sample-specs.h:

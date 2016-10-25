@@ -1,0 +1,5 @@
+eca-comhelp.o: eca-comhelp.cpp /usr/include/stdc-predef.h eca-comhelp.h
+
+/usr/include/stdc-predef.h:
+
+eca-comhelp.h:

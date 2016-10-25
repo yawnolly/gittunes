@@ -1,0 +1,212 @@
+/*
+Theme Name: blankslate-child theme
+Template: blankslate
+ */
+
+@import url("../blankslate/style.css");
+@import url("./assets/bootstrap-3.3.6-dist/css/bootstrap.min.css");
+@import url("./assets/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css");
+
+
+#nav-right{
+	margin-top:12px;
+	margin-right: 15px;
+}
+
+#top-bar{
+	background-color:#009999 !important;
+}
+
+#project-list{
+	background-image:linear-gradient(to left, rgba(43, 124, 161, 1) 0%, rgba(55, 154, 200, 1) 100%), linear-gradient(to bottom, rgba(21, 62, 81, 1) 0%, rgba(21, 62, 81, 1) 100%);
+    background-clip: content-box, padding-box;
+}
+
+.project-info li{
+	border-left-style:solid;
+	border-left-width:1px;
+	border-left-color:grey;
+	padding-left:15px;
+}
+
+#track-section-header{
+    padding-left: 17px;
+    background-color: inherit;
+}
+
+#track-section-header button{
+    vertical-align: bottom;
+}
+
+#track-section-header h2,ul{
+    margin-bottom: 0px;
+}
+
+#commit-form-wrapper{
+    padding-left: 30px;
+    padding-bottom: 5px;
+    display: block;
+}
+
+#commit-form, #successful-commit, #no-file-commit, #no-comment-commit, #file-type-error{
+    display: none;
+}
+
+
+#transport-box{
+    border:1px solid #bbb;
+    background-color: white;
+    padding: 10px;
+    height:74px;
+    list-style-position: inside;
+}
+
+.play-button{
+    border:2px solid #1a0a00;
+    background-color: #35fb7f;
+    border-radius:25px;
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.pause-button{
+    border:2px solid #1a0a00;
+    background-color: #fb812e;
+    border-radius:25px;
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-right: 19px;
+    padding-left: 20px;
+}
+
+.vol-slider{
+    display: inline-block;
+    width: 100px;
+
+}
+
+#trackheads{
+    padding-right: 0px;
+    margin-top: 15px;
+}
+
+#trackbods{
+    padding-left: 0px;
+}
+
+.track-head{
+    padding: 15px;
+    height:60px;
+    border-style:solid;
+    border-width: 1px;
+}
+
+.track-box{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    background-image: url("./assets/waveform.png");
+    height:60px;
+}
+
+#solo{
+    margin-left:5px; 
+    vertical-align:middle;
+}
+
+.project {
+	margin-top:3px;
+	margin-bottom:5px;
+	background-color:#c5e7ff;
+}
+
+.proj-head {
+	height: 110px;
+}
+
+.body{
+	padding-top: 51px;
+	background-color: #7e77ff;
+    min-height: 100vh;
+    position:relative;
+    overflow-x: hidden;
+}
+
+.headroom{
+    padding-top: 20px;
+}
+
+#community-content{
+    margin-top: 20px;
+}
+
+/* Comment Box */
+
+.detailBox {
+    border:1px solid #bbb;
+    background-color:#fdfdfd;
+}
+.titleBox {
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+} 
+
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+footer{
+    position: absolute;
+    bottom: 2px;
+}
+footer #copyright{
+}

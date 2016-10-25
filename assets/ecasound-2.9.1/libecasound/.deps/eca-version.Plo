@@ -1,0 +1,8 @@
+eca-version.lo: eca-version.cpp /usr/include/stdc-predef.h ../config.h \
+ eca-version.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:
+
+eca-version.h:

@@ -1,0 +1,5 @@
+audiofx_lv2.lo: audiofx_lv2.cpp /usr/include/stdc-predef.h ../config.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:

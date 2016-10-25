@@ -1,0 +1,6 @@
+audiofx_lv2_world.lo: audiofx_lv2_world.cpp /usr/include/stdc-predef.h \
+ ../config.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:

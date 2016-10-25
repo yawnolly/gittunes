@@ -1,0 +1,5 @@
+midi-parser.lo: midi-parser.cpp /usr/include/stdc-predef.h midi-parser.h
+
+/usr/include/stdc-predef.h:
+
+midi-parser.h:

@@ -1,0 +1,91 @@
+subject: Ecasound 2.9.1 released
+
+1. Summary of changes in this release
+-------------------------------------
+
+Bug fixed with ai-remove/ao-remove. Regression fixed in ALSA PCM draining
+logic. Many minor bugs have been fixed.
+
+2. What is Ecasound?
+--------------------
+
+Ecasound is a software package designed for multitrack audio processing.
+It can be used for simple tasks like audio playback, recording and format
+conversions, as well as for multitrack effect processing, mixing,
+recording and signal recycling. Ecasound supports a wide range of audio
+inputs, outputs and effect algorithms. Effects and audio objects can be
+combined in various ways, and their parameters can be controlled by
+operator objects like oscillators and MIDI-CCs. A versatile console mode
+user-interface is included in the package.
+
+Primary platform for running Ecasound is GNU/Linux. Ecasound can also be
+run on many UNIX-derived systems such as FreeBSD, Mac OS X and Solaris.
+Limited support for Windows is available through Cygwin. Ecasound is
+licensed under the GPL. The Ecasound Control Interface (ECI) is licensed
+under the LGPL.
+
+3. Changes in 2.9.1 release
+---------------------------
+
+* Bugfixes to ALSA PCM output, ecatools, ECI ai-remove/ao-remove commands,
+  '-t' option. See NEWS file and git history.
+
+* Ecasound now compiled with SUSv3 (-D_XOPEN_SOURCE=600).
+
+Full list of changes is available at:
+ - http://nosignal.fi/ecasound/history.php
+
+4. Interface and configuration file changes in 2.9.1 series
+-----------------------------------------------------------
+
+None.
+
+5. Contributors to 2.9.1 series
+-------------------------------
+
+Patches - Accepted code, documentation and build system changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Extracted with 'git-shortlog -s':
+
+v2.9.1:
+     2  Alessandro Ghedini
+    24  Kai Vehmanen
+
+Bug Hunting - Reports that led to bugfixes (items closed)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v2.9.1
+   * Knut Petersen (3)
+      multiple issues with ALSA drainining logic added to 2.8.0
+      bug in -t/cs-set-length
+   * Rocco / linuxmedia4 (1)
+      bug in ai-remove/ao-remove
+   * Brett Koonce (1)
+      build error with Mac XCode 5.x and SUSv2/_XOPEN_SOURCE=500
+   * Julien Claassen (1)
+      invalid design-by-contract warnings
+   
+Feature suggestions - Ideas that led to new features (items)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+No features implemented.
+
+6. Links and files
+------------------
+   
+Web site (and mirrors):
+        http://nosignal.fi/ecasound (fi)
+        http://ecasound.seul.org (us)
+        http://ecasound.sourceforge.net (us)
+
+Source package:
+        http://nosignal.fi/ecasound/download.php     
+        ecasound-2.9.1.tar.gz, md5sum:
+        (TBD, see publiseh release notes at:
+         http://nosignal.fi/ecasound/relnotes/)
+
+List of distributions with maintained Ecasound support:
+        See http://nosignal.fi/ecasound/download.php
+
+-- 
