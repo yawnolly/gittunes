@@ -56,8 +56,8 @@ if (isset($_POST["upload"])){
 			$wpdb->insert('wp_tracks',array('name' => $t, 'filename' => $aud['name'], 'project_id' => $pid));
 		}
 		
-		shell_exec("git add *");
-		shell_exec("git commit -m '".$_POST['description']."'");
+		shell_exec("git add * ".$php_path);
+		shell_exec("git commit -m '".$_POST['description']."' ".$php_path);
 
 		header("Location: ".home_url("project?pid=".$pid));
 
