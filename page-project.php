@@ -10,6 +10,12 @@ $json = json_encode($tracks);
 
 $path_parts = pathinfo($site_root.$data->name);
 $proj_path = $site_root.$path_parts['basename'];
+$shell_path = $server_root.$path_parts['basename']."/";
+
+chdir($proj_path);
+exec("git log", $op);
+$log = parseLog($op);
+ChromePhp::log($log);
 
 if (isset($_POST['download']) && $_POST['download'] = 1){
 	ignore_user_abort(true);
@@ -42,13 +48,6 @@ if (isset($_POST['download']) && $_POST['download'] = 1){
 }
 
 elseif (isset($_POST["commit"])){
-	//form validation
-	$valid = 1;
-
-	if ($_FILES['files']['size'] == 0){
-		echo "<script type='text/javascript'>document.getElementById('no-file-commit').display = 'block'</script>";
-		$valid = 0;
-	}
 
 	foreach ($_FILES['files']['name'] as $i) {
 		$type = pathinfo($proj_path.$i,PATHINFO_EXTENSION);
@@ -56,11 +55,6 @@ elseif (isset($_POST["commit"])){
 			echo "<script type='text/javascript'>$('#file-type-error').show()</script>";
 			$valid = 0;
 		}
-	}
-
-	if (empty($_POST['msg'])){
-		echo "<script type='text/javascript'>$('#no-comment-commit').show()</script>";
-		$valid = 0;
 	}
 
 	//data allocation
@@ -75,7 +69,8 @@ elseif (isset($_POST["commit"])){
 		$wpdb->insert('wp_tracks',array('name' => $_POST['track'.$i], 'filename' => $f['name'], 'project_id' => $pid));
 	}
 
-	shell_exec("git add *; git commit -m '".$_POST['msg']."'");
+	$_POST['msg'] = str_replace("\n", " ", $_POST['msg']);
+	exec('wp-content/themes/blankslate-child/shellscripts/commit.sh '.$data->name.' '.'"'.$_POST['msg'].'"');
 
 	header("Refresh:0");
 }
@@ -86,6 +81,8 @@ get_header();
 
 
 <script type="text/javascript">
+
+alert
 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -180,7 +177,7 @@ function volume(level){
 			<div class="well proj-head">
 				<div class="col-lg-6">
 
-					<h1 style="display:inline-block; float:left;""><?php echo $data->name; ?></h1>
+					<h1 style="display:inline-block; float:left;"><?php echo $data->name."--".$msg ?></h1>
 					&nbsp;
 					&nbsp;
 					<ul class="list-inline project-info" style="display:inline-block;">
@@ -280,7 +277,7 @@ function volume(level){
 							<input name="msg" id="commit-msg" placeholder="Commit Message" type="text" class="form-control" />
 
 							<span class="input-group-btn">
-								<button class="btn btn-primary" type="submit" name="commit">Commit</button>
+								<button class="btn btn-primary" type="submit" name="commit" id="commit-button">Commit</button>
 							</span>
 						</div>				
 					</div>
@@ -334,9 +331,10 @@ function volume(level){
 						</select>
 					</div> -->
 					</div>
-					<table class="table table-bordered">
+					<table class="table table-bordered" id="commit-table">
 						<thead>
 							<tr>
+								<th>#</th>
 								<th>Message</th>
 								<th>User</th>
 								<th>Date</th>
@@ -344,26 +342,14 @@ function volume(level){
 						</thead>
 
 						<tbody>
+						<?php foreach ($log as $i => $commit) { ?>
 							<tr>
-								<td>Added bass</td>
-								<td>magellin</td>
-								<td>July 16, 2016</td>
+								<td><?php echo $i ?></td>
+								<td><?php echo $commit['message'] ?></td>
+								<td><?php echo $commit['author'] ?></td>
+								<td><?php echo $commit['date'] ?></td>
 							</tr>
-							<tr>
-								<td>Added bass</td>
-								<td>magellin</td>
-								<td>July 16, 2016</td>
-							</tr>
-							<tr>
-								<td>Added bass</td>
-								<td>magellin</td>
-								<td>July 16, 2016</td>
-							</tr>
-							<tr>
-								<td>Added bass</td>
-								<td>magellin</td>
-								<td>July 16, 2016</td>
-							</tr>
+						<?php } ?>
 						</tbody>
 					</table>
 				</div>		

@@ -1,6 +1,8 @@
 <?php 
 include_once 'functions.php';
 
+$op = getcwd();
+
 if (isset($_POST["upload"])){
 	set_time_limit(600);
 	ini_set('memory_limit', '256M');
@@ -11,6 +13,7 @@ if (isset($_POST["upload"])){
 
 	//path from site root, used for php functions
 	$php_path = $site_root.$_POST['pname']."/";
+	$shell_path = $server_root.$_POST['pname']."/";
 
 	$date = date("Y-m-d H:i:s");
 
@@ -41,7 +44,6 @@ if (isset($_POST["upload"])){
 
 	if ($valid == 1){
 		$o = mkdir($php_path);
-		shell_exec("git init ".$php_path);
 
 		global $wpdb;
 
@@ -55,9 +57,8 @@ if (isset($_POST["upload"])){
 			move_uploaded_file($aud['tmp_name'], $php_path.$aud['name']);
 			$wpdb->insert('wp_tracks',array('name' => $t, 'filename' => $aud['name'], 'project_id' => $pid));
 		}
-		
-		shell_exec("git add * ".$php_path);
-		shell_exec("git commit -m '".$_POST['description']."' ".$php_path);
+
+		$op2 = exec('wp-content/themes/blankslate-child/shellscripts/init.sh '.$_POST['pname'].' '.'"'.$_POST['description'].'"');
 
 		header("Location: ".home_url("project?pid=".$pid));
 
@@ -74,7 +75,7 @@ get_header(); ?>
 	<div class="row headroom">
 		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
 			<div class="panel panel-default">
-				<div class="panel-heading">Upload a Project (all fields are required) <?php echo $o ?></div>
+				<div class="panel-heading">Upload a Project (all fields are required) <?php echo $op; ?></div>
 
 				<div class="panel-body">
 					<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action=<?php echo home_url("upload"); ?>>

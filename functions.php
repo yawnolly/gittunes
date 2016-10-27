@@ -1,4 +1,5 @@
 <?php
+include_once 'assets/ChromePhp.php';
 
 	//path from site root, used for php functions
 	$site_root = "wp-content/themes/blankslate-child/projects/";
@@ -70,4 +71,26 @@ function wavDur($file) {
     return str_pad($minutes,2,"0", STR_PAD_LEFT).":".str_pad($seconds,2,"0", STR_PAD_LEFT);
   }
 }
+
+function parseLog($log) {
+    $history = array();
+    foreach($log as $key => $line) {
+        if(strpos($line, 'commit') === 0 || $key + 1 == count($lines)){
+            $commit['hash'] = substr($line, strlen('commit') + 1);
+        } else if(strpos($line, 'Author') === 0){
+            $commit['author'] = substr($line, strlen('Author:') + 1);
+        } else if(strpos($line, 'Date') === 0){
+            $commit['date'] = substr($line, strlen('Date:') + 3);
+        } elseif (strpos($line, 'Merge') === 0) {
+            $commit['merge'] = substr($line, strlen('Merge:') + 1);
+            $commit['merge'] = explode(' ', $commit['merge']);
+        } else if(!empty($line)){
+            $commit['message'] = substr($line, 4);
+            array_push($history, $commit);  
+            unset($commit);            
+        }
+    }
+    return $history;
+}
+
 ?>

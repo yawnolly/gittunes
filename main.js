@@ -33,24 +33,18 @@ $("#upload").click(function(){
 	$("#commit-form").show();
 });
 
-// $("#commit-form").submit(function(e){
-// 	e.preventDefault();
-// 	i=0;
-// 	if ($("#commit-file").get(0).files.length == 0){
-// 		$("#commit-file").parent().addClass("has-error");
-// 		$("#no-file-commit").show();
-// 		i++;
-// 	}
-// 	if($("#commit-msg").val() == ""){
-// 		$("#commit-msg").parent().addClass("has-error");
-// 		$("#no-comment-commit").show();
-// 		i++;
-// 	}
-// 	if (i==0){
-// 		$("#commit-form").hide();
-// 		$("#successful-commit").show();
-// 	}
-// });
+$("#commit-form").submit(function(e){
+	if ($("#commit-file").get(0).files.length == 0){
+		e.preventDefault();
+		$("#commit-file").parent().addClass("has-error");
+		$("#no-file-commit").show();
+	} 
+	if($("#commit-msg").val() == ""){
+		e.preventDefault();
+		$("#commit-msg").parent().addClass("has-error");
+		$("#no-comment-commit").show();
+	}
+});
 
 $("#seek").change(function(){
 	var time = this.value;
@@ -152,3 +146,9 @@ function stopSeek(){
 	clearInterval(seek);
 }
 
+
+//COMMIT TABLE
+
+$("#commit-table > tbody > tr").click(function(){
+	alert(this.rowIndex);
+})
